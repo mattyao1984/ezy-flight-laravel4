@@ -1,0 +1,127 @@
+*:focus {
+    outline: 0;
+    resize: none;
+}
+
+form{
+	margin: 30px 0;
+	position: relative;
+}
+
+form input,
+form button{
+	position: absolute;
+	right: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: 1px solid #ddd;
+	height: 50px;
+	min-width: 350px;
+	margin-left: 20px;
+	padding: 10px 10px;
+	line-height: 50px;
+}
+
+input[type="submit"]{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+form #submit{
+	width: 200px;
+	margin-right: 14px;
+	margin-top: 10px;
+}
+
+form .form-msg{
+	position: absolute;
+	right: 0;
+}
+
+form .form-msg li{
+	color: #f00;
+}
+
+.button{
+	border: none;
+	border-radius: 5px;
+	height: 50px;
+	line-height: 50px;
+	padding: 0;
+	margin: 0;
+	display: block;
+	background: rgba(0,0,0,1);
+	color: #fff;
+	cursor: pointer !important;
+}
+
+.button:disabled{
+	background: rgba(200,200,200,1);
+	color: #fff;
+	cursor: default !important;
+}
+
+form input[type="checkbox"]{
+	position: relative;
+	margin-left: 94px;
+	margin-right: 10px;
+	zoom: 2;
+	float: left;
+}
+
+form input.ng-invalid.ng-dirty {
+	border: 1px solid #f00;
+	color: #f00;
+}
+
+form input.ng-valid.ng-dirty {
+	border: 1px solid #ddd;
+	color: #000;
+}
+
+form p{
+	position: relative;
+	display: inline-block;
+	float: left;
+	line-height: 40px;
+}
+
+form p a{
+	color: #000;
+	text-decoration: underline;
+	margin-left: 5px;
+}
+
+form p a:hover{
+	color: #000;
+	text-decoration: underline;
+}
+
+form label{
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+	width: 100%;
+	font-size: 16px;
+}
+
+form label span{
+	width: 150px;
+	text-align: right;
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	color: #000;
+}
+
+form label span.form-text{
+	display: inline-block;
+	margin-left: 20px;
+	font-weight: normal;
+	text-align: left;
+}

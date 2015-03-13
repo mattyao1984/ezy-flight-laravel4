@@ -1,0 +1,27 @@
+{
+  "name": "angular-native-datepicker",
+  "version": "1.0.2",
+  "main": [
+    "./build/themes/default.css",
+    "./build/themes/default.date.css",
+    "./build/themes/default.time.css",
+    "./build/angular-datepicker.js"
+  ],
+  "ignore": [
+    "CONTRIBUTING.md",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "angular": "latest"
+  },
+  "homepage": "https://github.com/alongubkin/angular-datepicker",
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.2",
+    "commit": "e216d6ba57cc64510c3471aa4fa97e50c5dd7ba6"
+  },
+  "_source": "git://github.com/alongubkin/angular-datepicker.git",
+  "_target": "1.0.2",
+  "_originalSource": "angular-native-picker"
+}

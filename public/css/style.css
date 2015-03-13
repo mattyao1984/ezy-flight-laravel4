@@ -1,0 +1,426 @@
+/* Global */
+/* Form */
+.pageFade.ng-enter,
+.pageFade.ng-leave {
+  -webkit-transition: all, 0.5s, linear;
+  -moz-transition: all, 0.5s, linear;
+  -ms-transition: all, 0.5s, linear;
+  -o-transition: all, 0.5s, linear;
+  transition: all, 0.5s, linear;
+}
+
+.pageFade.ng-enter {
+  opacity: 0;
+}
+
+.pageFade.ng-enter-active {
+  opacity: 1;
+}
+
+.pageFade.ng-leave {
+  opacity: 1;
+}
+
+.pageFade.ng-leave-active {
+  opacity: 0;
+}
+
+.modalIn {
+  -webkit-transition: all, 0.5s, linear;
+  -moz-transition: all, 0.5s, linear;
+  -ms-transition: all, 0.5s, linear;
+  -o-transition: all, 0.5s, linear;
+  transition: all, 0.5s, linear;
+}
+
+.modalIn.ng-hide {
+  opacity: 0;
+}
+
+form {
+  width: 100%;
+  margin-top: 50px;
+}
+form * {
+  outline: none;
+}
+
+input[type="text"],
+input[type="password"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+  background: #eeeeee;
+  background-image: none;
+  border-radius: 2px;
+  height: 60px;
+  line-height: 60px;
+  padding: 5px 10px 5px 60px;
+  color: #686868;
+  border: 1px solid #ddd;
+  font-weight: 800;
+  -webkit-transition: border-color, ease-in-out, 0.15s;
+  -moz-transition: border-color, ease-in-out, 0.15s;
+  -ms-transition: border-color, ease-in-out, 0.15s;
+  -o-transition: border-color, ease-in-out, 0.15s;
+  transition: border-color, ease-in-out, 0.15s;
+  -webkit-transition: box-shadow, ease-in-out, 0.15s;
+  -moz-transition: box-shadow, ease-in-out, 0.15s;
+  -ms-transition: box-shadow, ease-in-out, 0.15s;
+  -o-transition: box-shadow, ease-in-out, 0.15s;
+  transition: box-shadow, ease-in-out, 0.15s;
+}
+input[type="text"].modal-input,
+input[type="password"].modal-input {
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid #ddd;
+  padding: 5px 0;
+  height: 50px;
+  line-height: 50px;
+  color: #333;
+  box-shadow: none;
+}
+input[type="text"].modal-input:focus,
+input[type="password"].modal-input:focus {
+  border-bottom: 2px solid #007cc4;
+}
+input[type="text"].normal-input,
+input[type="password"].normal-input {
+  margin-top: 20px;
+  height: 40px;
+  background: #ffffff;
+  line-height: 40px;
+  color: #333333;
+  padding: 15px;
+}
+
+.text-wrap {
+  position: relative;
+  height: 60px;
+  display: block;
+  margin-bottom: 30px;
+}
+.text-wrap i {
+  position: absolute;
+  font-size: 27px;
+  color: #cccccc;
+  top: 15px;
+  left: 20px;
+}
+
+button {
+  text-transform: uppercase;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold !important;
+  letter-spacing: 1.15px;
+}
+button.btn-primary {
+  width: 100%;
+}
+
+.select-wrap {
+  height: 40px;
+  width: 100%;
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  background-image: url(../images/select-arrow.png);
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  margin-top: 20px;
+  line-height: 40px;
+}
+.select-wrap select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  border-radius: 0;
+  color: #333;
+  font-size: 15px;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.round-btn {
+  width: 64px;
+  height: 64px;
+  display: block;
+  background: #007cc4;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.round-btn:hover, .round-btn:active {
+  background: #006199;
+}
+.round-btn i {
+  font-size: 25px;
+  line-height: 64px;
+  color: #ffffff;
+}
+
+/* General */
+* {
+  outline: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #edecec;
+  display: block;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+html .error, body .error {
+  color: #d50000;
+  font-size: 12px;
+  margin-top: 5px;
+}
+html .error.login-error, body .error.login-error {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 12px;
+}
+html .error i, body .error i {
+  font-size: 12px !important;
+  position: relative !important;
+  margin-right: 10px !important;
+  line-height: 18px !important;
+  color: #d50000 !important;
+  top: inherit;
+  left: inherit;
+}
+html h3, body h3 {
+  padding: 0;
+  margin: 0;
+}
+html .container, body .container {
+  width: 940px;
+  margin: 0 auto;
+  position: relative;
+}
+html .loader, body .loader {
+  text-align: center;
+  height: 80px;
+  line-height: 80px;
+}
+html .loader img, body .loader img {
+  width: 200px !important;
+}
+html .page header, body .page header {
+  height: 50px;
+  background: #007cc4;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+html .page header #refresh-btn, body .page header #refresh-btn {
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 50px;
+  margin-right: 17px;
+  cursor: pointer;
+}
+html .page header #refresh-btn:hover, body .page header #refresh-btn:hover {
+  color: #ccc;
+}
+html .page header #logout-btn, body .page header #logout-btn {
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 50px;
+  margin-left: 17px;
+  cursor: pointer;
+}
+html .page header #logout-btn:hover, body .page header #logout-btn:hover {
+  color: #ccc;
+}
+html .page header h3, body .page header h3 {
+  color: #ffffff;
+  margin-left: 17px;
+  font-size: 24px;
+  line-height: 50px;
+  font-weight: bold;
+}
+html .page img, body .page img {
+  width: 100%;
+}
+html .page.home .login-form, body .page.home .login-form {
+  background: #ffffff;
+  width: 100%;
+  display: block;
+  box-shadow: 0 2px 5px 1px #999;
+  position: relative;
+  text-align: center;
+  padding: 50px 65px 65px 65px;
+  margin: 50px auto;
+}
+html .page.home .loader-wrap, body .page.home .loader-wrap {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.8);
+}
+html .page.home .loader-wrap img, body .page.home .loader-wrap img {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+html .page.bookings, body .page.bookings {
+  position: relative;
+}
+html .page.bookings .container, body .page.bookings .container {
+  padding: 70px 0;
+}
+html .page.bookings .add-flight, body .page.bookings .add-flight {
+  position: fixed;
+  bottom: 30px;
+  right: 17px;
+}
+html .page.bookings table, body .page.bookings table {
+  width: 100%;
+}
+html .page.bookings table thead tr th, body .page.bookings table thead tr th {
+  background: transparent;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #333333;
+}
+html .page.bookings table tbody tr, body .page.bookings table tbody tr {
+  border: 1px solid #ddd;
+}
+html .page.bookings table tbody tr td, body .page.bookings table tbody tr td {
+  background: #ffffff;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+html .page.bookings table tbody tr td.remove-wrap, body .page.bookings table tbody tr td.remove-wrap {
+  width: 50px;
+  position: relative;
+}
+html .page.bookings table tbody tr td.remove-wrap a, body .page.bookings table tbody tr td.remove-wrap a {
+  display: block;
+  line-height: 50px;
+  text-align: center;
+  font-size: 20px;
+  color: #8b8b8b;
+  background: #ffffff;
+  cursor: pointer;
+}
+html .page.bookings table tbody tr td.remove-wrap a:hover, body .page.bookings table tbody tr td.remove-wrap a:hover {
+  background: #edecec;
+}
+html .page.bookings table tbody tr td.remove-wrap ul.booking-btns, body .page.bookings table tbody tr td.remove-wrap ul.booking-btns {
+  display: none !important;
+  width: 170px;
+  display: block;
+  position: absolute;
+  left: -160px;
+  bottom: -70px;
+  z-index: 9;
+}
+html .page.bookings table tbody tr td.remove-wrap ul.booking-btns.show, body .page.bookings table tbody tr td.remove-wrap ul.booking-btns.show {
+  display: block !important;
+}
+html .page.bookings table tbody tr td.remove-wrap ul.booking-btns li, body .page.bookings table tbody tr td.remove-wrap ul.booking-btns li {
+  height: 40px;
+  list-style: none;
+}
+html .page.bookings table tbody tr td.remove-wrap ul.booking-btns li .booking-btn, body .page.bookings table tbody tr td.remove-wrap ul.booking-btns li .booking-btn {
+  height: 40px;
+  line-height: 40px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  font-size: 16px;
+  text-align: left;
+  background: rgba(200, 200, 200, 0.9);
+  cursor: pointer;
+}
+html .page.bookings table tbody tr td.remove-wrap ul.booking-btns li .booking-btn:hover, body .page.bookings table tbody tr td.remove-wrap ul.booking-btns li .booking-btn:hover {
+  background: rgba(220, 220, 220, 0.9);
+}
+html .page.bookings table tbody tr td.remove-wrap ul.booking-btns li .booking-btn i, body .page.bookings table tbody tr td.remove-wrap ul.booking-btns li .booking-btn i {
+  line-height: 40px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px;
+}
+html .page.bookings .modal, body .page.bookings .modal {
+  position: fixed;
+  display: block;
+  z-index: 9;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+html .page.bookings .modal form, body .page.bookings .modal form {
+  position: absolute;
+  z-index: 9;
+  width: 500px;
+  height: 600px;
+  display: block;
+  padding: 80px 70px;
+  box-shadow: 0 2px 5px 1px #666;
+  background: #ffffff;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  html .page .container, body .page .container {
+    width: 100%;
+  }
+  html .page.bookings .container, body .page.bookings .container {
+    padding: 70px 17px;
+  }
+  html .page.bookings table thead tr th, body .page.bookings table thead tr th {
+    font-size: 11px;
+  }
+  html .page.bookings table tbody tr td, body .page.bookings table tbody tr td {
+    font-size: 10px;
+  }
+  html .page.bookings .modal form, body .page.bookings .modal form {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,23 @@
+.pageFade.ng-enter, 
+.pageFade.ng-leave 
+	@include my-transition(all, 0.5s, linear)
+
+.pageFade.ng-enter
+	opacity: 0
+
+.pageFade.ng-enter-active
+	opacity: 1
+
+.pageFade.ng-leave 
+	opacity: 1
+
+.pageFade.ng-leave-active
+	opacity: 0
+
+.modalIn
+	@include my-transition(all, 0.5s, linear)
+
+.modalIn.ng-hide
+	opacity: 0
+
+

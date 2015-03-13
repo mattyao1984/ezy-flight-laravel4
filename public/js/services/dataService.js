@@ -2,40 +2,31 @@
 
 angular.module('services', [])
 .factory('dataService', ['$http','$q', function($http, $q) {
-	var myConfig;
-	var env = 'staging';
-
 	return {
-		setConfig: function(_data){
-      this.myConfig = _data;
-    },
+    getMyBookings: function(userId){
+      var query = 'where=' + JSON.stringify({
+      	'userId': userId
+      });
 
-    getConfig: function(){
-        return this.myConfig;
-    },
+      var req = {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          url: '/booking/' + userId
+      };
 
-		getServerConfig: function(){
-      var promise = $http({ method: 'GET', url: 'scripts/models/config.json' }).success(function(data, status, headers, config) {
+      var promise = $http(req).success(function(data, status, headers, config) {
           return data;
       });
 
       return promise;
     },
 
-    getMyBookings: function(userId){
-    	var PARSE_HEADER = {
-        'Content-Type': 'application/json'
-      };
-
-      PARSE_HEADER = $.extend(PARSE_HEADER, this.myConfig.settings[env].header);
-
-      var query = 'where=' + JSON.stringify({
-      	'userId': userId
-      });
+    getSignOut: function(){
       var req = {
           method: 'GET',
-          headers: PARSE_HEADER,
-          url: this.myConfig.base_url + '/Bookings?' + query + '&limit=1000'
+          url: '/logout'
       };
 
       var promise = $http(req).success(function(data, status, headers, config) {

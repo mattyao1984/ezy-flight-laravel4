@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('controllers')
-.controller('bookingsController', ['$rootScope', '$scope', '$route', '$location', 'dataService', function($rootScope, $scope, $route, $location, dataService) {
-	$scope.userId = $route.current.params.userId;
+.controller('bookingsController', ['$scope', '$location', 'dataService', function($scope, $location, dataService) {
+	$scope.userId = 1;
 	$scope.showModal = false;
 	$scope.dataReady = false;
 	$scope.allBookings = [];
@@ -10,11 +10,10 @@ angular.module('controllers')
 
 	$scope.submitted = false;
 	$scope.filter = 'all';
-
-	//Get and set config settings 
-	dataService.getServerConfig().then(function(server_res){
-		dataService.setConfig(server_res.data);
-		$scope.syncData();
+	
+	dataService.getMyBookings($scope.userId).then(function(bookingsRes){
+		$scope.allBookings = bookingsRes.data.results;
+		$scope.dataReady = true;
 	});
 
 	$scope.addFlight = function(){
@@ -35,8 +34,9 @@ angular.module('controllers')
 	};
 
 	$scope.logout = function(){
-		localStorage.setItem('isLoggedIn' ,false);
-		$location.path('/');
+		dataService.getSignOut().then(function(res){
+			window.location = '/';
+		});
 	};
 
 	$scope.setFormScope= function(scope){

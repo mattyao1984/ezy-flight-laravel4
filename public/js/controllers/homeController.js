@@ -7,12 +7,17 @@ angular.module('controllers', [])
 
 	$scope.login = function(){
 		$scope.dataLoading = true;
-		authService.getLogin($scope.username, $scope.password).then(function(res){
-			$scope.errorMessage = '';
+		authService.postLogin($scope.username, $scope.password).then(function(res){
 			$scope.dataLoading = false;
+			if(res.data.code === '0'){
+				$scope.errorMessage = res.data.info;
+			}else{
+				$scope.errorMessage = '';
+				window.location = '/bookings/' + res.data.id;
+			}
 		}, function(error){
 			$scope.dataLoading = false;
-			$scope.errorMessage = 'Username/Password is not correct';
+			$scope.errorMessage = 'Login error.';
 		});
 	};
 }]);

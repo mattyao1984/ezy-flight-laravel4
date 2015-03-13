@@ -11,12 +11,19 @@
 angular
   .module('ezyFlightApp', [
     'ngAnimate',
+    'ngRoute',
     'ngSanitize',
     'directives',
     'controllers',
     'services',
     'angular-datepicker'
   ])
+  .config(function($locationProvider) {
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
+  })
   .config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('%%');
     $interpolateProvider.endSymbol('%%');

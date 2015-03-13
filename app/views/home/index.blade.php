@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="login-form">
-          <img src="images/home-logo.png" class="home-logo">
+          <img src="/images/home-logo.png" class="home-logo">
           <form>
             <div class="form-group">
               <div class="text-wrap">
@@ -24,7 +24,7 @@
           </form>
           <p class="error login-error" ng-show="errorMessage !== ''">%% errorMessage %%</p>
           <div class="loader-wrap" ng-show="dataLoading">
-            <img src="images/loader.gif">
+            <img src="/images/loader.gif">
           </div>
         </div>
       </div>

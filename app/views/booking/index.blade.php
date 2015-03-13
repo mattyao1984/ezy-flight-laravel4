@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row loader" ng-show="!dataReady">
       <div class="col-xs-6 col-xs-offset-3">
-        <img src="images/loading-bookings.gif">
+        <img src="/images/loading-bookings.gif">
       </div>
     </div>
 
@@ -69,6 +69,6 @@
   </div>
 
   <a class="add-flight round-btn" ng-click="addFlight()"><i class="fa fa-plus"></i></a>
-  <ng-include src="'views/partials/booking-modal.html'"></ng-include>
+  <ng-include src="'/templates/booking-modal.html'"></ng-include>
 </div>
 @stop

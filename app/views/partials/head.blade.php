@@ -25,6 +25,7 @@
 {{HTML::script('js/lib/jquery-migrate-1.2.1.min.js')}}
 {{HTML::script('js/lib/angular.js')}}
 {{HTML::script('js/lib/angular-animate.min.js')}}
+{{HTML::script('js/lib/angular-route.min.js')}}
 {{HTML::script('js/lib/angular-sanitize.min.js')}}
 {{HTML::script('js/lib/bootstrap.min.js')}}
 {{HTML::script('js/lib/underscore.js')}}

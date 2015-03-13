@@ -1,0 +1,70 @@
+<div class="modal modalIn" ng-show="showModal">
+	<form class="booking-form" name="bookingForm" ng-init="setFormScope(this)" novalidate>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+		      <div class="text-wrap">
+		        <input type="text" class="form-control modal-input" name="source" placeholder="Source" ng-model="booking.source" autofocus required>
+		        <p class="error" ng-show="submitted && bookingForm.source.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please enter your source.</p>
+		      </div>
+		    </div>
+		  </div>
+	  </div>
+
+    <div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+		      <div class="text-wrap">
+		        <input type="text" class="form-control modal-input" name="destination" placeholder="Destination" ng-model="booking.destination" required>
+		        <p class="error" ng-show="submitted && bookingForm.destination.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please enter your destination.</p>
+		      </div>
+		    </div>
+		  </div>
+	  </div>
+
+	  <div class="row">
+			<div class="col-xs-6">
+				<div class="form-group">
+		      <div class="text-wrap">
+		        <input type="text" class="form-control modal-input" name="date" pick-a-date="date" placeholder="Date" ng-model="booking.date" required>
+		        <p class="error" ng-show="submitted && bookingForm.date.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please choose your date.</p>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="col-xs-6">
+				<div class="form-group">
+		      <div class="text-wrap">
+		        <input type="text" class="form-control modal-input" name="time" pick-a-time="time" placeholder="Time" ng-model="booking.time" required>
+		        <p class="error" ng-show="submitted && bookingForm.time.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please choose your time.</p>
+		      </div>
+		    </div>
+		  </div>
+	  </div>
+
+	  <div class="row">
+			<div class="col-xs-6">
+				<div class="form-group">
+		      <div class="text-wrap">
+		        <input type="text" class="form-control modal-input" name="capacity" placeholder="Capacity" ng-model="booking.capacity" required>
+		        <p class="error" ng-show="submitted && bookingForm.capacity.$error.required && !validCapacity()"><i class="fa fa-exclamation-triangle pull-left"></i>Please enter a valid capacity number.</p>
+		      </div>
+		    </div>
+		  </div>
+	  </div>
+
+	  <div class="row">
+	  	<div class="col-sm-4 col-sm-offset-4 col-xs-6">
+	  		<div class="form-group">
+	  			<button class="btn btn-primary" ng-click="cancelBooking()">Cancel</button>
+	  		</div>
+	  	</div>
+
+	  	<div class="col-sm-4 col-xs-6">
+	  		<div class="form-group">
+	  			<button class="btn btn-primary" ng-click="saveBooking()">Save</button>
+	  		</div>
+	  	</div>
+	  </div>
+	</form>
+</div>

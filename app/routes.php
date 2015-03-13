@@ -22,12 +22,13 @@ Route::filter('sentry_auth', function() {
 Route::group(array('before' => 'sentry_auth'), function()
 {
 	//Dashboard
-	Route::controller('/bookings/:userId', 'BookingController');
+	Route::controller('/bookings/{id}', 'BookingController');
 });
 
-
-//Custom Routes － User
-Route::get('/logout', array('as' => 'logout', 'uses' => 'UserController@getLogout'));
-Route::post('/login', array('uses' => 'UserController@postLogin'));
+Route::get('logout', array('uses' => 'BookingController@getLogout'));
 Route::controller('/', 'HomeController');
 
+App::missing(function($exception)
+{
+   return View::make('home.index');
+});

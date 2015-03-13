@@ -2,31 +2,18 @@
 
 angular.module('services')
 .factory('authService', ['$http','$q', function($http, $q) {
-	var myConfig;
-	var env = 'staging';
-
 	return {
-		setConfig: function(_data){
-      this.myConfig = _data;
-    },
-
-    getConfig: function(){
-        return this.myConfig;
-    },
-
-		getLogin: function(username, password){
-			var PARSE_HEADER = {
-        'Content-Type': 'application/json'
-      };
-
-      PARSE_HEADER = $.extend(PARSE_HEADER, this.myConfig.settings[env].header);
-
-      var query = 'username=' + username + '&password=' + password;
-
+		postLogin: function(username, password){
       var req = {
-        method: 'GET',
-        headers: PARSE_HEADER,
-        url: this.myConfig.login_url + encodeURI(query)
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        url: '/login',
+        data: {
+          'email': username,
+          'password': password
+        }
       };
 
 			var promise = $http(req).success(function(data, status, headers, config) {

@@ -19,4 +19,14 @@ class BookingController extends BaseController {
 	{	
 		return View::make('booking.index');
 	}
+
+	public function getLogout(){
+		Sentry::logout();
+
+		return Response::json(array(
+	    	'code' => '1', 
+	    	'info' => 'Log out successfully.'
+	  	)
+	  );
+	}
 }

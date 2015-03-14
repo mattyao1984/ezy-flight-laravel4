@@ -11,11 +11,6 @@ angular.module('controllers')
 	$scope.filter = 'all';
 	
 	setTimeout(function(){
-		/*dataService.getMyBookings($scope.userId).then(function(bookingsRes){
-			$scope.allBookings = bookingsRes.data;
-			$scope.dataReady = true;
-		});*/
-
 		$scope.allBookings = dataService.search({
 			id: $scope.userId
 		});
@@ -56,12 +51,6 @@ angular.module('controllers')
 
 	$scope.syncData = function(){
 		$scope.dataReady = false;
-		/*dataService.getMyBookings($scope.userId).then(function(bookingsRes){
-			$scope.allBookings = bookingsRes.data;
-			$scope.dataReady = true;
-			$scope.sortBookings();
-		});*/
-
 		$scope.allBookings = dataService.search({
 			id: $scope.userId
 		});
@@ -87,12 +76,6 @@ angular.module('controllers')
 			};
 
 			if($scope.bookingForm.bookingForm.$invalid == false && $scope.validCapacity()){
-				/*dataService.putEditFlight(data, $scope.booking.id).then(function(res){
-					$scope.showModal = false;
-					$scope.submitted = false;
-					$scope.sortBookings();
-				});*/
-
 				dataService.update(data, {id: $scope.booking.id}, function(res){
 					$scope.showModal = false;
 					$scope.submitted = false;
@@ -106,20 +89,7 @@ angular.module('controllers')
 
 			$scope.submitted = true;
 
-			if($scope.bookingForm.bookingForm.$invalid == false && $scope.validCapacity()){
-				/*dataService.postAddFlight(data).then(function(res){
-					$scope.showModal = false;
-					$scope.submitted = false;
-
-					var newId = res.data.id;
-					$scope.booking = $.extend($scope.booking, {
-						id: newId
-					});
-
-					$scope.allBookings.unshift($scope.booking); //Update allBookings list
-					$scope.sortBookings();
-				});*/
-
+			if($scope.bookingForm.bookingForm.$invalid == false && $scope.isPostiveNum($scope.booking.capacity)){
 				dataService.create(data, function(res){
 					$scope.showModal = false;
 					$scope.submitted = false;
@@ -136,25 +106,13 @@ angular.module('controllers')
 		}
 	};
 
-	$scope.isNumeric = function(n){
-	  return !isNaN(parseFloat(n)) && isFinite(n);
-	};
-
-	$scope.validCapacity = function(){
-		if($scope.isNumeric($scope.booking.capacity)){
-			return true;
-		}else{
-			return false;
-		}
+	$scope.isPostiveNum = function(s){
+	  return /^\d+$/.test(s);
 	};
 
 	$scope.removeBooking = function(id){
 		var answer = confirm('Are you sure to remove this flight from the system?');
 		if(answer){
-			/*dataService.deleteBooking(id).then(function(res){
-				//remove the booking from the list
-				$scope.allBookings = _.without($scope.allBookings, _.findWhere($scope.allBookings, {id: id}));
-			});*/
 			dataService.remove({id: id}, function(){
 				$scope.allBookings = _.without($scope.allBookings, _.findWhere($scope.allBookings, {id: id}));
 			});

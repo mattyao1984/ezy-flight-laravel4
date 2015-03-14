@@ -43,6 +43,16 @@ Just run 'grunt test --repoters' to test the app. Test result can be view under 
 - Site is responsive. But not pixel-perfect.
 - Added search and sorting functions.
 
+### What has been updated compared with the last version? ###
+- Backend solution is now Laravel4 with RESTful API built.
+- Routing and Auth is now controlled by Laravel.
+- Local database is enabled with MYSQL.
+- Data service is now replaced with ngResource to sync data models. Less code and quicker.
+- Fixed the capacity validator to ensure the positive integer input.
+
+### TODO LIST ###
+I will add some more E2E tests later if time permits with Selenium2 and Behat. 
+
 ### I have some questions ###
 Please contact Matt Yao via email mattyao1984@gmail.com
 

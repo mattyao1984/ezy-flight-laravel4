@@ -5,7 +5,7 @@
 				<div class="form-group">
 		      <div class="text-wrap">
 		        <input type="text" class="form-control modal-input" name="source" placeholder="Source" ng-model="booking.source" autofocus required>
-		        <p class="error" ng-show="submitted && bookingForm.source.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please enter your source.</p>
+		        <p class="error" ng-show="submitted && bookingForm.source.$error.required"><i class="fa fa-exclamation-triangle pull-right"></i>Enter your source.</p>
 		      </div>
 		    </div>
 		  </div>
@@ -16,7 +16,7 @@
 				<div class="form-group">
 		      <div class="text-wrap">
 		        <input type="text" class="form-control modal-input" name="destination" placeholder="Destination" ng-model="booking.destination" required>
-		        <p class="error" ng-show="submitted && bookingForm.destination.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please enter your destination.</p>
+		        <p class="error" ng-show="submitted && bookingForm.destination.$error.required"><i class="fa fa-exclamation-triangle pull-right"></i>Enter your destination.</p>
 		      </div>
 		    </div>
 		  </div>
@@ -27,7 +27,7 @@
 				<div class="form-group">
 		      <div class="text-wrap">
 		        <input type="text" class="form-control modal-input" name="date" pick-a-date="date" placeholder="Date" ng-model="booking.date" required>
-		        <p class="error" ng-show="submitted && bookingForm.date.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please choose your date.</p>
+		        <p class="error" ng-show="submitted && bookingForm.date.$error.required"><i class="fa fa-exclamation-triangle pull-right"></i>Choose your date.</p>
 		      </div>
 		    </div>
 		  </div>
@@ -36,7 +36,7 @@
 				<div class="form-group">
 		      <div class="text-wrap">
 		        <input type="text" class="form-control modal-input" name="time" pick-a-time="time" placeholder="Time" ng-model="booking.time" required>
-		        <p class="error" ng-show="submitted && bookingForm.time.$error.required"><i class="fa fa-exclamation-triangle pull-left"></i>Please choose your time.</p>
+		        <p class="error" ng-show="submitted && bookingForm.time.$error.required"><i class="fa fa-exclamation-triangle pull-right"></i>Choose your time.</p>
 		      </div>
 		    </div>
 		  </div>
@@ -47,7 +47,7 @@
 				<div class="form-group">
 		      <div class="text-wrap">
 		        <input type="text" class="form-control modal-input" name="capacity" placeholder="Capacity" ng-model="booking.capacity" required>
-		        <p class="error" ng-show="submitted && bookingForm.capacity.$error.required && !validCapacity()"><i class="fa fa-exclamation-triangle pull-left"></i>Please enter a valid capacity number.</p>
+		        <p class="error" ng-show="submitted && (bookingForm.capacity.$error.required || !isPostiveNum(booking.capacity))"><i class="fa fa-exclamation-triangle pull-right"></i>Enter a valid positive capacity.</p>
 		      </div>
 		    </div>
 		  </div>

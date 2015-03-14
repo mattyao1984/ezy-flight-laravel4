@@ -28,7 +28,7 @@ To see how it works, please check this [Demo Link](http://ezy-flight-app.herokua
 
 ### How to test? ###
 This app is tested with Karma which makes the test process eaiser than ever before.
-Just run 'grunt test --repoters' to test the app. Test result can be view under '/test/units.html'.
+Just run 'grunt karma' to test the app. Test result can be view under '/test/units.html'.
 
 ### Some notes: ###
 - I adjusted the width of the container to 940px which gives more room for pages.
@@ -45,7 +45,7 @@ Just run 'grunt test --repoters' to test the app. Test result can be view under 
 
 ### What has been updated compared with the last version? ###
 - Backend solution is now Laravel4 with RESTful API built.
-- Routing and Auth is now controlled by Laravel.
+- Routing and Auth is now controlled by Laravel. Booking pages are protected with Sentry filter with login access only.
 - Local database is enabled with MYSQL.
 - Data service is now replaced with ngResource to sync data models. Less code and quicker.
 - Fixed the capacity validator to ensure the positive integer input.

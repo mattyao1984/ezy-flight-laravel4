@@ -101,7 +101,7 @@ class BookingController extends \BaseController {
 		return Response::json(
 			array(
 				'code'     => '200',
-				'info'     => 'booking has been updated.',
+				'info'     => 'Booking has been updated.',
 				'id' 			 => $booking->id
 			)
 		);
@@ -122,7 +122,7 @@ class BookingController extends \BaseController {
 		return Response::json(
 			array(
 				'code'     => '200',
-				'info'     => 'booking has been deleted.'
+				'info'     => 'Booking has been deleted.'
 			)
 		);
 	}

@@ -19,10 +19,12 @@ Route::filter('sentry_auth', function() {
     }
 });
 
+/**
+ * APIs
+ */
 Route::group(array('before' => 'sentry_auth'), function()
 {
-	//Dashboard
-	Route::controller('/bookings/{id}', 'BookingController');
+	Route::resource('booking', 'BookingController');
 });
 
 Route::get('logout', array('uses' => 'BookingController@getLogout'));

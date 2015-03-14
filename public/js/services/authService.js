@@ -21,6 +21,19 @@ angular.module('services')
       });
 
       return promise;
-		}
+		},
+
+    getSignOut: function(){
+      var req = {
+          method: 'GET',
+          url: '/logout'
+      };
+
+      var promise = $http(req).success(function(data, status, headers, config) {
+          return data;
+      });
+
+      return promise;
+    }
 	}
 }]);

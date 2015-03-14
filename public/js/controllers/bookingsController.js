@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('controllers')
-.controller('bookingsController', ['$scope', '$location', 'dataService', function($scope, $location, dataService) {
-	$scope.userId = 1;
+.controller('bookingsController', ['$scope', '$location', 'dataService', 'authService', function($scope, $location, dataService, authService) {
 	$scope.showModal = false;
 	$scope.dataReady = false;
 	$scope.allBookings = [];
@@ -11,20 +10,32 @@ angular.module('controllers')
 	$scope.submitted = false;
 	$scope.filter = 'all';
 	
-	dataService.getMyBookings($scope.userId).then(function(bookingsRes){
-		$scope.allBookings = bookingsRes.data.results;
-		$scope.dataReady = true;
-	});
+	setTimeout(function(){
+		/*dataService.getMyBookings($scope.userId).then(function(bookingsRes){
+			$scope.allBookings = bookingsRes.data;
+			$scope.dataReady = true;
+		});*/
 
+		$scope.allBookings = dataService.search({
+			id: $scope.userId
+		});
+
+		$scope.allBookings.$promise.then(function(bookingsRes){
+			$scope.allBookings = bookingsRes;
+			$scope.dataReady = true;
+			$scope.sortBookings();
+		});
+	},50);
+	
 	$scope.addFlight = function(){
 		$scope.showModal = true;
 		$scope.booking = {};
 	};
 
-	$scope.editFlight = function(objectId){
+	$scope.editFlight = function(id){
 		$scope.showModal = true;
 		$scope.booking = _.find($scope.allBookings, function(b){
-			return b.objectId === objectId;
+			return b.id === id;
 		});
 	};
 
@@ -34,7 +45,7 @@ angular.module('controllers')
 	};
 
 	$scope.logout = function(){
-		dataService.getSignOut().then(function(res){
+		authService.getSignOut().then(function(res){
 			window.location = '/';
 		});
 	};
@@ -45,16 +56,27 @@ angular.module('controllers')
 
 	$scope.syncData = function(){
 		$scope.dataReady = false;
-		dataService.getMyBookings($scope.userId).then(function(bookingsRes){
-			$scope.allBookings = bookingsRes.data.results;
+		/*dataService.getMyBookings($scope.userId).then(function(bookingsRes){
+			$scope.allBookings = bookingsRes.data;
 			$scope.dataReady = true;
+			$scope.sortBookings();
+		});*/
+
+		$scope.allBookings = dataService.search({
+			id: $scope.userId
+		});
+
+		$scope.allBookings.$promise.then(function(bookingsRes){
+			$scope.allBookings = bookingsRes;
+			$scope.dataReady = true;
+			$scope.sortBookings();
 		});
 	};
 
 	$scope.saveBooking = function(){
 		$scope.booking.capacity = parseInt($scope.booking.capacity);
 
-		if($scope.booking.hasOwnProperty('objectId')){
+		if($scope.booking.hasOwnProperty('id')){
 			$scope.submitted = true;
 			var data = {
 				source: $scope.booking.source,
@@ -65,7 +87,13 @@ angular.module('controllers')
 			};
 
 			if($scope.bookingForm.bookingForm.$invalid == false && $scope.validCapacity()){
-				dataService.putEditFlight(data, $scope.booking.objectId).then(function(res){
+				/*dataService.putEditFlight(data, $scope.booking.id).then(function(res){
+					$scope.showModal = false;
+					$scope.submitted = false;
+					$scope.sortBookings();
+				});*/
+
+				dataService.update(data, {id: $scope.booking.id}, function(res){
 					$scope.showModal = false;
 					$scope.submitted = false;
 					$scope.sortBookings();
@@ -79,16 +107,29 @@ angular.module('controllers')
 			$scope.submitted = true;
 
 			if($scope.bookingForm.bookingForm.$invalid == false && $scope.validCapacity()){
-				dataService.postAddFlight(data).then(function(res){
+				/*dataService.postAddFlight(data).then(function(res){
 					$scope.showModal = false;
 					$scope.submitted = false;
 
-					var newId = res.data.objectId;
+					var newId = res.data.id;
 					$scope.booking = $.extend($scope.booking, {
-						objectId: newId
+						id: newId
 					});
 
-					$scope.allBookings.push($scope.booking); //Update allBookings list
+					$scope.allBookings.unshift($scope.booking); //Update allBookings list
+					$scope.sortBookings();
+				});*/
+
+				dataService.create(data, function(res){
+					$scope.showModal = false;
+					$scope.submitted = false;
+
+					var newId = res.id;
+					$scope.booking = $.extend($scope.booking, {
+						id: newId
+					});
+
+					$scope.allBookings.unshift($scope.booking); //Update allBookings list
 					$scope.sortBookings();
 				});
 			}
@@ -107,12 +148,15 @@ angular.module('controllers')
 		}
 	};
 
-	$scope.removeBooking = function(objectId){
+	$scope.removeBooking = function(id){
 		var answer = confirm('Are you sure to remove this flight from the system?');
 		if(answer){
-			dataService.deleteBooking(objectId).then(function(res){
+			/*dataService.deleteBooking(id).then(function(res){
 				//remove the booking from the list
-				$scope.allBookings = _.without($scope.allBookings, _.findWhere($scope.allBookings, {objectId: objectId}));
+				$scope.allBookings = _.without($scope.allBookings, _.findWhere($scope.allBookings, {id: id}));
+			});*/
+			dataService.remove({id: id}, function(){
+				$scope.allBookings = _.without($scope.allBookings, _.findWhere($scope.allBookings, {id: id}));
 			});
 		}
 	};

@@ -1,18 +1,11 @@
 'use strict';
 
 angular.module('services', [])
-.factory('dataService', ['$http','$q', function($http, $q) {
-	return {
+.factory('dataService', function($resource) {
+	/*return {
     getMyBookings: function(userId){
-      var query = 'where=' + JSON.stringify({
-      	'userId': userId
-      });
-
       var req = {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
           url: '/booking/' + userId
       };
 
@@ -23,30 +16,13 @@ angular.module('services', [])
       return promise;
     },
 
-    getSignOut: function(){
-      var req = {
-          method: 'GET',
-          url: '/logout'
-      };
-
-      var promise = $http(req).success(function(data, status, headers, config) {
-          return data;
-      });
-
-      return promise;
-    },
-
     postAddFlight: function(bookingJSON){
-    	var PARSE_HEADER = {
-          'Content-Type': 'application/json'
-      };
-
-      PARSE_HEADER = $.extend(PARSE_HEADER, this.myConfig.settings[env].header);
-
       var req = {
           method: 'POST',
-          headers: PARSE_HEADER,
-          url: this.myConfig.base_url + '/Bookings',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          url: '/booking',
           data: bookingJSON
       };
 
@@ -57,17 +33,13 @@ angular.module('services', [])
       return promise;
     },
 
-    putEditFlight: function(bookingJSON, objectId){
-      var PARSE_HEADER = {
-          'Content-Type': 'application/json'
-      };
-
-      PARSE_HEADER = $.extend(PARSE_HEADER, this.myConfig.settings[env].header);
-
+    putEditFlight: function(bookingJSON, id){
       var req = {
           method: 'PUT',
-          headers: PARSE_HEADER,
-          url: this.myConfig.base_url + '/Bookings/' + objectId,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          url: '/booking/' + id,
           data: bookingJSON
       };
 
@@ -78,17 +50,13 @@ angular.module('services', [])
       return promise;
     },
 
-    deleteBooking: function(objectId){
-    	var PARSE_HEADER = {
-          'Content-Type': 'application/json'
-      };
-
-      PARSE_HEADER = $.extend(PARSE_HEADER, this.myConfig.settings[env].header);
-
+    deleteBooking: function(id){
       var req = {
           method: 'DELETE',
-          headers: PARSE_HEADER,
-          url: this.myConfig.base_url + '/Bookings/' + objectId
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          url: '/bookings/' + id
       };
 
       var promise = $http(req).success(function(data, status, headers, config) {
@@ -97,5 +65,33 @@ angular.module('services', [])
 
       return promise;
     }
-	}
-}]);
+	}*/
+
+  return $resource('/booking/:id', {id: '@id'}, {
+    search: {
+      method:'GET', 
+      params:{
+        id: '@id'
+      }, 
+      isArray:true
+    },
+
+    create: {
+      method:'POST'
+    },
+
+    update: {
+      method:'PUT', 
+      params:{
+        id: '@id'
+      }
+    },
+
+    remove: {
+      method: 'DELETE',
+      params: {
+        id: '@id'
+      }
+    }
+  });
+});

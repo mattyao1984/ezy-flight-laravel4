@@ -13,7 +13,7 @@ angular.module('controllers', [])
 				$scope.errorMessage = res.data.info;
 			}else{
 				$scope.errorMessage = '';
-				window.location = '/bookings/' + res.data.id;
+				window.location = '/booking';
 			}
 		}, function(error){
 			$scope.dataLoading = false;

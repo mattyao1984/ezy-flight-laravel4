@@ -6,11 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'BaseAPIController' => $baseDir . '/app/controllers/api/v1/BaseAPIController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'BaseModel' => $baseDir . '/app/models/BaseModel.php',
-    'BillingAddress' => $baseDir . '/app/models/BillingAddress.php',
-    'Bills' => $baseDir . '/app/models/Bills.php',
+    'Booking' => $baseDir . '/app/models/Booking.php',
     'BookingController' => $baseDir . '/app/controllers/BookingController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
@@ -1640,7 +1638,6 @@ return array(
     'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'User' => $baseDir . '/app/models/User.php',
-    'UserController' => $baseDir . '/app/controllers/UserController.php',
     'UsersTableSeeder' => $baseDir . '/app/database/seeds/UsersTableSeeder.php',
     'Whoops\\Exception\\ErrorException' => $vendorDir . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
     'Whoops\\Exception\\Formatter' => $vendorDir . '/filp/whoops/src/Whoops/Exception/Formatter.php',

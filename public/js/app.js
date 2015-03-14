@@ -12,6 +12,7 @@ angular
   .module('ezyFlightApp', [
     'ngAnimate',
     'ngRoute',
+    'ngResource',
     'ngSanitize',
     'directives',
     'controllers',

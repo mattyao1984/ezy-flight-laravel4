@@ -27,6 +27,7 @@
 {{HTML::script('js/lib/angular-animate.min.js')}}
 {{HTML::script('js/lib/angular-route.min.js')}}
 {{HTML::script('js/lib/angular-sanitize.min.js')}}
+{{HTML::script('js/lib/angular-resource.min.js')}}
 {{HTML::script('js/lib/bootstrap.min.js')}}
 {{HTML::script('js/lib/underscore.js')}}
 {{HTML::script('js/lib/moment.js')}}

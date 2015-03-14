@@ -1,12 +1,12 @@
 # README #
 
-Welcome to Ezy Flight App!
+Welcome to Ezy Flight App! This app is built with Laravel4 + AngularJS + HTML5.
 
 ### Demo Link ###
 To see how it works, please check this [Demo Link](http://ezy-flight-app.herokuapp.com/).
 
 ### How to install? ###
-- git clone repo: https://github.com/mattyao1984/ezy-flight-app.git 
+- git clone repo: https://github.com/mattyao1984/ezy-flight-laravel4.git
 - Install composer. Download from [here](https://getcomposer.org/download/)
 - Run 'composer install'
 - Run 'composer update'

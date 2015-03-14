@@ -36,10 +36,10 @@
                 <a class="remove-toggle" remove-toggle><i class="fa fa-ellipsis-v"></i></a>
                 <ul class="booking-btns">
                   <li>
-                    <div class="booking-btn edit-btn" ng-click="editFlight(booking.objectId)"><i class="fa fa-pencil-square-o pull-left"></i> Edit</div>
+                    <div class="booking-btn edit-btn" ng-click="editFlight(booking.id)"><i class="fa fa-pencil-square-o pull-left"></i> Edit</div>
                   </li>
                   <li>
-                    <div class="booking-btn remove-btn" ng-click="removeBooking(booking.objectId)"><i class="fa fa-trash-o pull-left"></i> Remove</div>
+                    <div class="booking-btn remove-btn" ng-click="removeBooking(booking.id)"><i class="fa fa-trash-o pull-left"></i> Remove</div>
                   </li>
                 </ul>
               </td>
@@ -68,6 +68,7 @@
     </div>
   </div>
 
+  <input type="hidden" ng-model="userId" ng-init="userId='{{ $user->id }}'" />
   <a class="add-flight round-btn" ng-click="addFlight()"><i class="fa fa-plus"></i></a>
   <ng-include src="'/templates/booking-modal.html'"></ng-include>
 </div>

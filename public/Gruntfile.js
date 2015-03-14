@@ -72,7 +72,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('karma');
+  grunt.loadNpmTasks('grunt-karma');
   
   // Default task(s).
   grunt.registerTask('default', ['uglify', 'cssmin', 'sass', 'watch']);

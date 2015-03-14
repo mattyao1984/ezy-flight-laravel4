@@ -11,6 +11,7 @@ describe('Controller: homeController', function () {
   beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
     scope = $rootScope.$new();
     $httpBackend = _$httpBackend_;
+
     homeController = $controller('homeController', {
       $scope: scope
     });
@@ -25,31 +26,19 @@ describe('Controller: homeController', function () {
 
   describe('Login event', function() {
     beforeEach(function() {
-      $httpBackend.expectGET('scripts/models/config.json')
-      .respond({
-        login_url: 'https://api.parse.com/1/login?',
-        based_url: 'https://api.parse.com/1/classes',
-        settings: {
-          staging: {
-            header: {
-              'X-Parse-Application-Id': 'xxx',
-              'X-Parse-REST-API-Key': 'xxx'
-            }
-          }
-        }
-      });
-
-      $httpBackend.flush();
-
       scope.username = 'test';
       scope.password = 'test';
     });
 
-    it('should have no error if access is succssful', function () {
-      var query = 'username=' + scope.username + '&password=' + scope.password;
-      $httpBackend.expectGET('https://api.parse.com/1/login?' + encodeURI(query))
+    it('should have an error access is not valid', function () {
+      $httpBackend.expectPOST('/login', {
+        email : scope.username,
+        password : scope.password
+      })
       .respond({
-        'objectId': 'testID'
+        'code': '0',
+        'info': 'Username/Password is not correct.',
+        'error': 'error'
       });
       scope.login();
       expect(scope.dataLoading).toBe(true);
@@ -57,7 +46,7 @@ describe('Controller: homeController', function () {
       $httpBackend.flush();
 
       expect(scope.dataLoading).toBe(false);
-      expect(scope.errorMessage).toBe('');
+      expect(scope.errorMessage).toBe('Username/Password is not correct.');
     });
   });
 });
